@@ -34,7 +34,6 @@ Page({
           })
         }
         var unjoin = total-1-joiner.length;
-        console.log(unjoin)
         that.setData({
           joiner:joiner,
           unjoin:unjoin
@@ -147,7 +146,7 @@ Page({
           method: 'POST',
           success: function (res) {
             wx.navigateTo({
-              url: '/pages/payment/payment?cart_id=' + res.data.cart_id + '&actives_type=2&group_goods_id=' + that.data.info.group.id
+              url: '/pages/payment/payment?cart_id=' + res.data.cart_id + '&actives_type=2&group_goods_id=' + that.data.info.group.id+'&group_head_id='+that.data.id
             })
           },
         })

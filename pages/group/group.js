@@ -22,7 +22,8 @@ Page({
     }else{
       that.setData({
         group_head_id: '0'
-      })      
+      })   
+      console.log('err')   
     }
     //获取商品id
     var id = e.id;
@@ -184,7 +185,7 @@ Page({
           //code为2  表示已经开团
         }else{
           wx.navigateTo({
-            url: '/pages/share/share?share=1&groupid='+res.data.group_head_id,
+            url: '/pages/share/share?share=1&group_head_id='+res.data.group_head_id,
           })
           that.setData({
             tip:'邀请参团'
@@ -266,6 +267,7 @@ Page({
           header: { "Content-Type": "application/x-www-form-urlencoded" },
           method: 'POST',
           success: function (res) {
+            console.log(that.data.group_head_id)
             wx.navigateTo({
               url: '/pages/payment/payment?cart_id=' + res.data.cart_id + '&actives_type=2&group_goods_id=' + that.data.detail.group.id +'&group_head_id='+that.data.group_head_id
             })

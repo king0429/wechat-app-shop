@@ -25,6 +25,11 @@ Page({
         //分销提成为0
         distribution_royalty:'0'
       })
+      if(e.group_head_id){
+        that.setData({
+          group_head_id:e.group_head_id
+        })
+      }
     }else{
       //分销
       that.setData({
@@ -126,6 +131,7 @@ Page({
   },
   //发送支付信息
   pay:function(){
+    console.log(getApp().globalData)
     var that = this;
     if(that.data.address!=''){
       var orderInfo = {
@@ -185,11 +191,10 @@ Page({
             //支付签名
             paySign: res.data.rows.paySign,
             success: function (res1) {
-              
               //若为拼团
               if (that.data.actives_type=='2'){
                 wx.navigateTo({
-                  url: '/pages/share/share?share=1&order_sn='+res1.data.order_sn,
+                  url: '/pages/share/share?share=1&order_sn='+res.data.order_sn,
                 })
               }else{
                 wx.showToast({
@@ -202,6 +207,9 @@ Page({
                 })
               }
             },
+            fail:function(){
+              console.log(res)
+            }
           })
         },
       })

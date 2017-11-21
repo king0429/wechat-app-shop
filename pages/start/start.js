@@ -20,7 +20,7 @@ Page({
   },
   test:function(){
     wx.navigateTo({
-      url: '/page/share/share?',
+      url: '/pages/share/share?share=2&group_head_id=19',
     })
   },
   /**
