@@ -10,6 +10,7 @@ Page({
   },
   onLoad: function (e) {
     var that = this;
+    //此id为group_head_id
     var id = e.id;
     that.setData({
       id: e.id,
@@ -26,18 +27,21 @@ Page({
         that.setData({
           detail: res.data,
         })
-        var total = res.data.total_count_num;
-        var joiner = [];
-        if(res.data.userlist.length>1){
-          res.data.userlist.forEach(function(val,index){
-            joiner.push(res.data.userlist[index+1])
+        //参团人
+        var userlist = res.data.userlist;
+        console.dir(userlist)
+        var joiner = userlist
+        if (joiner.length > 1) {
+          joiner.splice(0, 1);
+          console.log(joiner)
+          that.setData({
+            joiner: joiner
+          })
+        } else {
+          that.setData({
+            joiner: joiner
           })
         }
-        var unjoin = total-1-joiner.length;
-        that.setData({
-          joiner:joiner,
-          unjoin:unjoin
-        })
         var endtimeStamp = res.data.etime;
         var endtime = new Date().getTime();
         //剩余时间 秒

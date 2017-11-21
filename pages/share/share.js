@@ -30,15 +30,13 @@ Page({
         that.setData({
           group_head_id: e.group_head_id
         })
-      }else{
-       
       }
     }
     // share为1的有两种情况,order_sn为支付成功后跳转,groupid(group_head_id)为查询后直接跳转
     //根据id查询不同的接口
     var id = '0';
     if(!e.order_sn){
-      id = e.group_head_id
+      id = e.group_head_id;
       wx.request({
         url: 'https://xcx.bjletusq.com/index.php/home/group/getGroupInfo',
         data: { id: id },
@@ -50,6 +48,21 @@ Page({
             item: res.data,
             group_head_id: e.group_head_id
           })
+          //参团人
+          var userlist = res.data.userlist;
+          console.dir(userlist)
+          var joiner = userlist
+          if (joiner.length>1){
+            joiner.splice(0,1);
+            console.log(joiner)
+            that.setData({
+              joiner:joiner
+            })
+          }else{
+            that.setData({
+              joiner:joiner
+            })
+          }
           //倒计时
           var endtimeStamp = res.data.etime;
           var endtime = new Date().getTime();
@@ -115,6 +128,21 @@ Page({
                 item: res.data,
                 group_head_id:id
               })
+              //参团人
+              var userlist = res.data.userlist;
+              console.dir(userlist)
+              var joiner = userlist
+              if (joiner.length > 1) {
+                joiner.splice(0, 1);
+                console.log(joiner)
+                that.setData({
+                  joiner: joiner
+                })
+              } else {
+                that.setData({
+                  joiner: joiner
+                })
+              }
               //倒计时
               var endtimeStamp = res.data.etime;
               var endtime = new Date().getTime();

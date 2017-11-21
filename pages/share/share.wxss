@@ -6,7 +6,7 @@
 .header{
   display: flex;
   justify-content: center;
-  padding: 20rpx 0;
+  padding: 20rpx;
   flex-wrap: wrap;
 }
 .banner{
@@ -24,6 +24,18 @@
   justify-content: center;
   align-items: center;
 }
+.initiate{
+  width:100rpx;
+  height: 100rpx;
+  border: 1px solid #f09900;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
 .caption text{
   position: absolute;
   top: -15rpx;
@@ -35,7 +47,7 @@
   color: #fff;
   border-radius: 15rpx;
 }
-.caption image{
+.caption image,.initiate image{
   height: 90rpx;
   width: 90rpx;
   border-radius: 50%;
@@ -49,6 +61,7 @@
   text-align: center;
   line-height: 100rpx;
   margin-right:20rpx;
+  margin-top: 10rpx;
 }
 .time{
   text-align: center;

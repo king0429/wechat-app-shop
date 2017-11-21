@@ -10,8 +10,8 @@
         <image src='{{item.group_leader_user_id_header}}'></image>
       </view>
       <!--参团人 joiner  -->
-      <view class='initiate' wx:for="{{joiner}}" wx:key="index">
-        <image></image>
+      <view class='initiate' wx:for="{{joiner}}" wx:for-item='detail' wx:key="index">
+        <image src='{{detail.user_header}}'></image>
       </view>
       <view wx:for="{{item.total_count_num-item.userlist.length}}" class='joiner' wx:key="index">?</view>
     </view>

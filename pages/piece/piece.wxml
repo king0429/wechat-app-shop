@@ -35,10 +35,10 @@
       </view>
       <!--团员  -->
       <view class='initiate' wx:for="{{joiner}}" wx:key="index">
-        <image></image>
+        <image src="{{item.user_header}}"></image>
       </view>
       <!--未参团  -->
-      <view class='wait' wx:for="{{unjoin}}" wx:key="*this">?</view>
+      <view class='wait' wx:for="{{detail.total_count_num-detail.userlist.length}}" wx:key="*this">?</view>
     </view>
     <view class='lastTime'>仅剩<text>{{unjoin}}</text>人,{{day}}天{{hour}}小时{{minute}}分{{second}}秒</view>
     <view class='joinBtn' bindtap='topay'>一键参团</view>  
