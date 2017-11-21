@@ -18,7 +18,11 @@ Page({
   onLoad: function (options) {
   
   },
-
+  test:function(){
+    wx.navigateTo({
+      url: '/page/share/share?',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

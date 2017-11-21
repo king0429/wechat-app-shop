@@ -22,10 +22,11 @@ App({
                     url: 'https://xcx.bjletusq.com/index.php/home/common/getopenid',
                     method: 'GET',
                     data: {code: res1.code, appid: res.extConfig.appId},
-                    //提交平台appID,以及获取openid
+                    // 提交平台appID,以及获取openid
                     success: function (res6) {
-                      // console.log(res6)
-                      getApp().globalData.openid = res6.data.openid
+                      console.log(res1.code)
+                      console.log(res6)
+                      getApp().globalData.openid = 'ocDMB0eQOsGqhf0g4CSy1vltRGag';
                       //获取用户信息
                       wx.getUserInfo({
                         success: res2 => {
@@ -38,8 +39,8 @@ App({
                             header: { "Content-Type": "application/x-www-form-urlencoded" },
                             data: { openid: res6.data.openid, nickname: res2.userInfo.nickName, header: res2.userInfo.avatarUrl, openid: res6.data.openid, admin_user_id: getApp().globalData.shopId },
                             success: res3 => {
-                              // console.log(res3)
-                              getApp().globalData.userid = res3.data.id;
+                              console.log(res3)
+                              getApp().globalData.userid ='169';
                               getApp().globalData.is_distribution = res3.data.is_distribution;
                               getApp().globalData.username = res3.data.name;
                               getApp().globalData.userphone = res3.data.phone;

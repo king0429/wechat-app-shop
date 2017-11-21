@@ -3,7 +3,8 @@ Page({
   data: {
     hidden:'1',
     user_id:'0',
-    group_goods_id: '0'
+    group_goods_id: '0',
+    group_head_id:'0'
   },
   onLoad: function (e) {
     var that = this;
@@ -157,7 +158,9 @@ Page({
         //折扣(关联优惠券)
         bonus:0,
         //若为拼团
-        group_goods_id: that.data.group_goods_id
+        group_goods_id: that.data.group_goods_id,
+        //group_head_id
+        group_head_id: that.data.group_head_id,
       }
       console.info(orderInfo)
       //支付信息请求
@@ -167,6 +170,7 @@ Page({
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         method: 'POST',
         success: function (res) {
+          //包含订单号
           console.log(res)
           //调取微信支付
           wx.requestPayment({
@@ -181,11 +185,11 @@ Page({
             //支付签名
             paySign: res.data.rows.paySign,
             success: function (res1) {
+              
               //若为拼团
-              console.log(res1)
               if (that.data.actives_type=='2'){
                 wx.navigateTo({
-                  url: '/pages/share/share?share=1&cart_id='+that.data.cart_id,
+                  url: '/pages/share/share?share=1&order_sn='+res1.data.order_sn,
                 })
               }else{
                 wx.showToast({

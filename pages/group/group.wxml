@@ -19,7 +19,7 @@
     </view>
   </view>
   <view class='break'></view>
-  <view class='groupInfo'>
+  <view class='groupInfo' wx:if="{{hasList!=0}}">
     <view class='groupTitle'>
       <view>正在拼团{{detail.salesvolume}}人</view>
       <view bindtap='more' wx:if="{{isshort!='1'}}">

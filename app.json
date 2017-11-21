@@ -1,7 +1,7 @@
 {
   "pages": [
 
-  
+
     "pages/index/index",
     "pages/catlist/catlist",
     "pages/bindphone/bindphone",
@@ -16,17 +16,17 @@
     "pages/appointment/appoinment",
     "pages/membership/membership",
     "pages/group/group",
-  "pages/share/share",
+    "pages/share/share",
     "pages/grouplist/grouplist",
     "pages/setting/setting",
     "pages/active/active",
     "pages/payment/payment",
     "pages/mine/mine",
+        "pages/start/start",
     "pages/paycar/paycar",
     "pages/mall/mall",
     "pages/piece/piece",
     "pages/detail/detail",
-
     "pages/canvas/canvas",
     "pages/success/success",
     "pages/distributionList/distributionList",

@@ -138,8 +138,6 @@ page{
 .break{
   height: 20rpx;
   background: #f0f0f0;
-  border-top:1px solid #dedede;
-  border-bottom:1px solid #dedede;
 }
 .infoTitle{
   height: 80rpx;

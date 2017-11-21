@@ -1,9 +1,5 @@
 // pages/group/group.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     colorCurrent: '999',
     sizeCurrent: '999',
@@ -15,13 +11,19 @@ Page({
     current:0,
     colorId:'-1',
     sizeId:'-1',
-    group:[
-    
-    ] 
   },
   onLoad: function (e) {
-
     var that = this;
+    //若为拼团(区别开团)
+    if(e.group_head_id){
+      that.setData({
+        group_head_id:e.group_head_id
+      })
+    }else{
+      that.setData({
+        group_head_id: '0'
+      })      
+    }
     //获取商品id
     var id = e.id;
     that.setData({
@@ -48,14 +50,20 @@ Page({
           header: { "Content-Type": "application/x-www-form-urlencoded" },
           method: 'POST',
           success: function (res1) {
-            console.log(res1.data)
-            res1.data.forEach(function (val, index) {
-              timer(val.etime, val)
-              res1.data[index] = val
-            })
-            that.setData({
-              group: res1.data
-            })
+            if(res1.data.length==0){
+              that.setData({
+                hasList:'0'
+              })
+            }else{
+              res1.data.forEach(function (val, index) {
+                timer(val.etime, val)
+                res1.data[index] = val
+              })
+              that.setData({
+                group: res1.data
+              })
+            }
+
             //拼团列表信息翻译
             if (res1.data.length >= 3) {
               var lastgroup = [];
@@ -163,6 +171,8 @@ Page({
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       method: 'POST',
       success: function (res) {
+        console.log(res)
+        // code为1 表示可以正常开团
         if(res.data.code=='1'){
           var group_price = that.data.group_price;
           that.setData({
@@ -171,14 +181,17 @@ Page({
             price: group_price,
             tip: '一键拼团'
           })
+          //code为2  表示已经开团
         }else{
           wx.navigateTo({
-            url: '/pages/share/share',
+            url: '/pages/share/share?share=1&groupid='+res.data.group_head_id,
+          })
+          that.setData({
+            tip:'邀请参团'
           })
         }
       },
     })    
-
   },
   //选择颜色,和颜色
   changeColor:function(e){
@@ -240,7 +253,7 @@ Page({
           success: function (res) {
             wx.navigateTo({
               //参数完整
-              url: '/pages/payment/payment?cart_id=' + res.data.cart_id ,
+              url: '/pages/payment/payment?cart_id=' + res.data.cart_id+'&actives_type=0' ,
             })
           },
         })
@@ -254,7 +267,7 @@ Page({
           method: 'POST',
           success: function (res) {
             wx.navigateTo({
-              url: '/pages/payment/payment?cart_id=' + res.data.cart_id + '&actives_type=2&group_goods_id=' + that.data.detail.group.id
+              url: '/pages/payment/payment?cart_id=' + res.data.cart_id + '&actives_type=2&group_goods_id=' + that.data.detail.group.id +'&group_head_id='+that.data.group_head_id
             })
           },
         })
