@@ -8,37 +8,83 @@ Page({
   },
   onLoad: function (e) {
     var that = this;
-    //分销用户id id为空,则无人分销
-    if(e.user_id=='undefined'){
+    //三种进入判断用actives_type
+    if(e.actives_type=='0'){
+      // 普通购买
       that.setData({
+        actives_type: '0',
         cart_id: e.cart_id,
         user_id: '0',
-        distribution_royalty: '0',  
-        actives_type:'0'    
+        distribution_royalty: '0',
       })
-    } else if (e.actives_type=='2'){
-      //拼团
+    }else if(e.actives_type=='1'){
+      //用户分销后购买
       that.setData({
-        cart_id:e.cart_id,
-        actives_type:'2',
-        group_goods_id: e.group_goods_id,
-        //分销提成为0
-        distribution_royalty:'0'
-      })
-      if(e.group_head_id){
-        that.setData({
-          group_head_id:e.group_head_id
-        })
-      }
-    }else{
-      //分销
-      that.setData({
+        actives_type:'1',
         cart_id: e.cart_id,
         user_id: e.user_id,
-        distribution_royalty: e.distribution_royalty,
-        actives_type: '1'
+        distribution_royalty:e.distribution_royalty
       })
+    }else{
+      //拼团情况
+      if (e.group_goods_id){
+        //拼团列表入口
+        that.setData({
+          cart_id: e.cart_id,
+          actives_type: '2',
+          group_goods_id: e.group_goods_id,
+          distribution_royalty: '0',
+          group_head_id: e.group_head_id
+        })            
+      }else{
+        //拼团商品入口
+        that.setData({
+          cart_id: e.cart_id,
+          actives_type: '2',
+          distribution_royalty: '0',
+          group_head_id: e.group_head_id
+        })   
+      }    
     }
+
+
+    //分销用户id id为空,则无人分销
+    // if(e.user_id=='undefined'){
+    //   that.setData({
+    //     cart_id: e.cart_id,
+    //     user_id: '0',
+    //     distribution_royalty: '0',
+    //     actives_type: '0'
+    //   })
+    // } else if (e.actives_type=='2'){
+    //   //拼团
+    //   that.setData({
+    //     cart_id:e.cart_id,
+    //     actives_type:'2',
+    //     group_goods_id: e.group_goods_id,
+    //     //分销提成为0
+    //     distribution_royalty:'0'
+    //   })
+    //   if(e.group_head_id){
+    //     that.setData({
+    //       group_head_id:e.group_head_id
+    //     })
+    //   }
+    // } else if (e.actives_type=='1'){
+    //   //分销
+    //   that.setData({
+    //     cart_id: e.cart_id,
+    //     user_id: e.user_id,
+    //     distribution_royalty: e.distribution_royalty,
+    //     actives_type: '1',
+    //   })
+    // }else{
+    //   that.setData({
+    //     cart_id: e.cart_id,
+    //     user_id: '0',
+    //     distribution_royalty: '0',  
+    //   })
+    // }
     //获取商品(数组)
     wx.request({
       url: 'https://xcx.bjletusq.com/index.php/home/product/getIdCart',
@@ -155,7 +201,7 @@ Page({
         goods_amount: that.data.sum,
         //购物车id
         cart_id: that.data.cart_id,
-        //分销人姓名
+        //分销人id
         share_user_id: that.data.user_id,
         //分销提成
         share_money: that.data.distribution_royalty,

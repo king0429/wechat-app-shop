@@ -1,3 +1,0 @@
-<view class='wrap'>
-  <image src='{{seal}}'></image>
-</view>

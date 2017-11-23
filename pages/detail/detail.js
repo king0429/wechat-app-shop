@@ -243,6 +243,7 @@ Page({
     if (that.data.colorId!='-1'&&that.data.sizeId!='-1'){
       //判断点击来源是否为立即购买
       if (e.currentTarget.dataset.tip == '提交') {
+        console.log(that.data)
         wx.request({
           url: 'https://xcx.bjletusq.com/index.php/home/product/addCart',
           data: { user_id: getApp().globalData.userid, goods_id: that.data.id, goods_name: that.data.detail.goods_name, goods_price: that.data.price, goods_number: that.data.num, goods_attr_color: that.data.detail.color[that.data.colorId].attr_value, goods_attr_size: that.data.detail.size[this.data.sizeId].attr_value, actives_type: that.data.actives_type},

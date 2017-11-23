@@ -172,7 +172,7 @@ Page({
     })
     if(URL_control==1){
       wx.navigateTo({
-        url: '/pages/payment/payment?cart_id=' + topay,
+        url: '/pages/payment/payment?actives_type=0&cart_id=' + topay,
       })
     }else{
       wx.showToast({

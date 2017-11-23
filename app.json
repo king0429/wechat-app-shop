@@ -27,7 +27,6 @@
     "pages/mall/mall",
     "pages/piece/piece",
     "pages/detail/detail",
-    "pages/canvas/canvas",
     "pages/success/success",
     "pages/distributionList/distributionList",
     "pages/dis_detail/disdetail"

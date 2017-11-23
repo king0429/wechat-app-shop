@@ -27,6 +27,7 @@ page{
   height: 100rpx;
 }
 .item .itemTitle{
+  width: 100%;
   line-height: 1.8;
   color: #333;
   font-size: 16px;
@@ -34,6 +35,9 @@ page{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.leftItem{
+  width: 70%;
 }
 .leftItem view:nth-child(2){
   font-size: 14px;
@@ -64,7 +68,7 @@ page{
   padding: 0;
 }
 .groupInfo{
-  height: 300rpx;
+  max-height: 300rpx;
   padding: 20rpx;
   font-size: 14px;
 }

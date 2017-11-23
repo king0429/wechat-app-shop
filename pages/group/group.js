@@ -231,11 +231,31 @@ Page({
   //查看更多拼团信息
   togroup:function(e){
     var that = this;
-    console.log(e)
-    console.log(that.data.id)
-    wx.navigateTo({
-      url: '/pages/piece/piece?id='+e.currentTarget.dataset.id+'&goods_id='+that.data.id,
+    //判断是否可以参加拼团
+    wx.request({
+      url: 'https://xcx.bjletusq.com/index.php/home/group/checkUserOffered',
+      data: { group_goods_id: that.data.detail.group.id, user_id: getApp().globalData.userid },
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
+      method: 'POST',
+      success: function (res) {
+        console.log(res)
+        // code为1 表示可以正常开团
+        if (res.data.code == '1') {
+          var group_price = that.data.group_price;
+          wx.navigateTo({
+            url: '/pages/piece/piece?id=' + e.currentTarget.dataset.id + '&goods_id=' + that.data.id,
+          })
+          //code为2  表示已经开团
+        } else {
+          wx.navigateTo({
+            url: '/pages/share/share?share=1&group_head_id=' + res.data.group_head_id,
+          })
+        }
+      },
     })
+
+
+
   },
   //提交团购信息
   tobuy:function(){

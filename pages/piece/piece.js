@@ -31,7 +31,7 @@ Page({
         var userlist = res.data.userlist;
         console.dir(userlist)
         var joiner = userlist
-        if (joiner.length > 1) {
+        if (joiner.length >= 1) {
           joiner.splice(0, 1);
           console.log(joiner)
           that.setData({
