@@ -80,7 +80,7 @@ page{
   font-size: 14px;
   height: 96%;
 }
-.imgbox{
+.info{
   margin-bottom: 110rpx;
 }
 .imgbox image{

@@ -27,7 +27,7 @@
   </view>
   <view class='break'></view>
   <view class='forVip'>
-    <view class="info-title" wx:if="{{push!=null}}">
+    <view class="info-title" wx:if="{{push!='null'}}">
       <text>推荐活动</text>
     </view>
     <view class='info-list'>
