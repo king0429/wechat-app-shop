@@ -94,11 +94,11 @@ Page({
       success: function(res) {
         var sum = 0;
         var items = res.data.rows;
-        console.log(items)
         var num = [];
         //获取总计,每条商品个数
+        console.log(res.data.rows)
         items.forEach(function(val,index){
-          sum += parseInt(val.goods_price)    
+          sum += parseFloat(val.goods_price);   
           num[index] = val.goods_number;
         })
         that.setData({
@@ -177,7 +177,6 @@ Page({
   },
   //发送支付信息
   pay:function(){
-    console.log(getApp().globalData)
     var that = this;
     if(that.data.address!=''){
       var orderInfo = {

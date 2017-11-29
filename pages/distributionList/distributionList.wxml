@@ -2,7 +2,7 @@
   <view class='banner'>
     <view class='title'>账户可用佣金</view>
     <view class='num' bindtap='{{getMoney}}' style='background:{{bg}}'>¥{{sum}}</view>
-    <view class='tip'>大于1元可体现</view>
+    <view class='tip'>大于1元可提现</view>
   </view>
   <view class='list'>
     <view class='listTitle'>

@@ -9,7 +9,7 @@
   </view>
   <view class='item'>
     <view class='leftItem'>
-      <view class='itemTitle'>{{detail.goods_name}}</view>
+       <view class='itemTitle'>{{detail.goods_name}}</view> 
       <view class='prc'>
         <text>¥{{detail.goods_price}}</text>
         <!--拼团销量  -->
@@ -27,7 +27,7 @@
         <image src="/pages/source/images/foward.png"></image>
       </view>
     </view>
-    <view class='groupList' wx:for="{{lastgroup}}" wx:key="{{*this}}">
+    <view class='groupList' wx:for="{{lastgroup}}" wx:if="{{item.status=='0'}}" wx:key="{{*this}}">
       <view class='listLeft'>
         <view>
           <image src='{{item.header}}'></image>
@@ -70,7 +70,7 @@
     </view>     
     <view class='tobuy' bindtap='startGroup'>
       <view>¥{{detail.group.group_price}}</view>
-      <view>一键开团</view>
+      <view>{{slogan}}</view>
     </view>    
   </view>
 </view>

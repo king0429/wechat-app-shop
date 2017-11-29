@@ -5,8 +5,9 @@ Page({
     statusList:[
       {img:'/pages/source/images/status1.png',title:'待付款'},
       { img: '/pages/source/images/status2.png', title: '待成团' },
+      { img: '/pages/source/images/status3.png', title: '待发货' },
       { img: '/pages/source/images/status4.png', title: '待收货' },
-      { img: '/pages/source/images/status5.png', title: '待评价' },                        
+      { img: '/pages/source/images/status5.png', title: '已完成' },                        
     ],
     functionList: [
       { img: '/pages/source/images/online.png', title: '在线预约' },
@@ -85,7 +86,7 @@ Page({
     })
   },
   toorderlist:function(e){
-    var current = e.currentTarget.dataset.index;
+    var current = e.currentTarget.dataset.index+1;
     wx.navigateTo({
       url: '/pages/orders/orders?current='+current,
     })
@@ -120,7 +121,7 @@ Page({
         break;
       default:
         wx.showToast({
-          title: '敬请期待',
+          title: '请联系客服开通',
           duration:2000,
           image:'/pages/source/images/waiting.png'
         })

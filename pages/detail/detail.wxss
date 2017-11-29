@@ -28,6 +28,7 @@ page{
   border-bottom: 1px solid #dedede;
 }
 .item .itemTitle{
+  width: 100%;
   line-height: 1.8;
   color: #333;
   font-size: 16px;
@@ -35,6 +36,9 @@ page{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.leftItem{
+  width: 60%;
 }
 .leftItem view:nth-child(2){
   font-size: 14px;

@@ -134,6 +134,7 @@ swiper{
   color: #fff;
   border-radius: 10rpx;
   border: 1px solid #ff0100;
+  font-size: 14px;
 }
 .footer{
   background: #f0f0f0;

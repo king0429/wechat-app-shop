@@ -7,30 +7,30 @@ Page({
     hidden:'1',
     colorId:'-1',
     sizeId:'-1',
+    isEnd:'0',
   },
   onLoad: function (e) {
     var that = this;
-    //此id为group_head_id
+    //此id为group_head_id,获取拼团信息
     var id = e.id;
     that.setData({
       id: e.id,
       goods_id:e.goods_id
     })
-    //拼团相信信息
+    //拼团商品信息
     wx.request({
       url: 'https://xcx.bjletusq.com/index.php/home/group/getGroupInfo',
       method: 'POST',
       data: { id: id },
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       success: res => {
-        console.log(res.data)
         that.setData({
           detail: res.data,
         })
-        //参团人
+        //参团人列表
         var userlist = res.data.userlist;
-        console.dir(userlist)
-        var joiner = userlist
+        //区别开团人(团长)和参团人
+        var joiner = userlist;
         if (joiner.length >= 1) {
           joiner.splice(0, 1);
           console.log(joiner)
@@ -42,8 +42,25 @@ Page({
             joiner: joiner
           })
         }
+        //时间倒计时
         var endtimeStamp = res.data.etime;
         var endtime = new Date().getTime();
+        //拼团结束
+        if(endtimeStamp<0){
+          that.setData({
+            isEnd:'1'
+          })
+          wx.showToast({
+            title: '拼团结束',
+            image:'/pages/source/images/info.png',
+            duration:3000,
+            success:function(){
+              setTimeout(function(){
+                wx.navigateBack({})
+              },2000)
+            }
+          })
+        }
         //剩余时间 秒
         var leftsecond = (endtimeStamp * 1000 - endtime) / 1000;
         var d = parseInt(leftsecond / 3600 / 24);

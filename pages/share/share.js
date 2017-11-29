@@ -16,7 +16,7 @@ Page({
         tip:'邀请好友参加团',
         share_type:'share',
         togroup:'',
-        order_sn:e.order_sn
+        order_sn:e.order_sn,
       })
       //进入分享页面,所以分享出去的页面share均为2
     }else if(e.share==2||e.order_sn){
@@ -50,14 +50,23 @@ Page({
           })
           //参团人
           var userlist = res.data.userlist;
-          console.dir(userlist)
-          var joiner = userlist
+          var joiner = userlist;
           if (joiner.length>=1){
-            joiner.splice(0,1);
-            console.log(joiner)
-            that.setData({
-              joiner:joiner
-            })
+            if (that.data.item.userlist.length == res.data.total_count_num){
+              console.log(1)
+              joiner.splice(0, 1);
+              that.setData({
+                joiner: joiner,
+                tip: '拼团完成,等待商家通知',
+                share_type: 'none',
+                togroup: '',   
+              })
+            }else{
+              joiner.splice(0, 1);
+              that.setData({
+                joiner: joiner
+              })
+            }
           }else{
             that.setData({
               joiner:joiner
@@ -130,14 +139,23 @@ Page({
               })
               //参团人
               var userlist = res.data.userlist;
-              console.dir(userlist)
               var joiner = userlist
               if (joiner.length >= 1) {
-                joiner.splice(0, 1);
-                console.log(joiner)
-                that.setData({
-                  joiner: joiner
-                })
+                if (that.data.item.userlist.length == res.data.total_count_num) {
+                  console.log(1)
+                  joiner.splice(0, 1);
+                  that.setData({
+                    joiner: joiner,
+                    tip: '拼团完成,等待商家通知',
+                    share_type: 'none',
+                    togroup: '',
+                  })
+                } else {
+                  joiner.splice(0, 1);
+                  that.setData({
+                    joiner: joiner
+                  })
+                }
               } else {
                 that.setData({
                   joiner: joiner

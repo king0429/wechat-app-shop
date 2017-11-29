@@ -11,19 +11,21 @@ Page({
     current:0,
     colorId:'-1',
     sizeId:'-1',
+    slogan:'一键开团',
   },
   onLoad: function (e) {
     var that = this;
     //若为拼团(区别开团)
     if(e.group_head_id){
       that.setData({
-        group_head_id:e.group_head_id
+        group_head_id:e.group_head_id,
+        slogan:'一键参团',
+        // hidden:'2'
       })
     }else{
       that.setData({
         group_head_id: '0'
-      })   
-      console.log('err')   
+      })     
     }
     //获取商品id
     var id = e.id;
@@ -51,6 +53,7 @@ Page({
           header: { "Content-Type": "application/x-www-form-urlencoded" },
           method: 'POST',
           success: function (res1) {
+            console.log(res1.data)
             if(res1.data.length==0){
               that.setData({
                 hasList:'0'
@@ -64,7 +67,6 @@ Page({
                 group: res1.data
               })
             }
-
             //拼团列表信息翻译
             if (res1.data.length >= 3) {
               var lastgroup = [];
@@ -253,12 +255,10 @@ Page({
         }
       },
     })
-
-
-
   },
   //提交团购信息
   tobuy:function(){
+    console.log(getApp().globalData.userid)
     var that = this;
     // 判断是否选择颜色,尺寸
     if (that.data.colorId != '-1' && that.data.sizeId != '-1') {

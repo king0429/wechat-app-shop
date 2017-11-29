@@ -1,5 +1,5 @@
 <!--pages/piece/piece.wxml-->
-<view class='container'>
+<view class='container' wx:if="{{isEnd!='1f6'}}">
   <view class='banner'>
     <view class='bannerLeft'>
       <image src='{{detail.goods_img}}'></image>
@@ -40,7 +40,7 @@
       <!--未参团  -->
       <view class='wait' wx:for="{{detail.total_count_num-detail.userlist.length}}" wx:key="*this">?</view>
     </view>
-    <view class='lastTime'>仅剩<text>{{detail.total_count_num-detail.userlist.length}}</text>人,<text wx:if="{{day!=0}}">{{day}}天</text>{{hour}}小时{{minute}}分{{second}}秒</view>
+    <view class='lastTime'>仅剩<text>{{detail.total_count_num-detail.userlist.length}}</text>人,<text style='color:#333' wx:if="{{day!=0}}">{{day}}天</text>{{hour}}小时{{minute}}分{{second}}秒</view>
     <view class='joinBtn' bindtap='topay'>一键参团</view>  
   </view>
   <view class='notice'>

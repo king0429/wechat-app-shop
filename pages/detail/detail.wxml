@@ -9,7 +9,7 @@
   </view>
   <view class='item'>
     <view class='leftItem'>
-      <view class='itemTitle'>{{detail.goods_name}}</view>
+       <view class='itemTitle'>{{detail.goods_name}}</view> 
       <view class='prc'>
         <text>¥{{detail.goods_price}}</text>
         <text>库存:{{detail.goods_number}}</text>
