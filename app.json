@@ -7,6 +7,7 @@
     "pages/bindphone/bindphone",
     "pages/address/address",
     "pages/orders/orders",
+            "pages/start/start",
     "pages/activeList/activeList",
     "pages/distribution/distribution",
     "pages/coupon/coupon",
@@ -22,7 +23,7 @@
     "pages/active/active",
     "pages/payment/payment",
     "pages/mine/mine",
-        "pages/start/start",
+
     "pages/paycar/paycar",
     "pages/mall/mall",
     "pages/piece/piece",

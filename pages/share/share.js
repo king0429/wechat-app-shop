@@ -222,10 +222,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this;
-    console.log(that.data.group_head_id)
+    // console.log(getApp().globalData)
     if (that.data.share_type=='share'){
       return {
-        title: '参与我的拼团',
+        title: '【' + getApp().globalData.uesrinfo.nickName + '】  邀请你参加【' + that.data.item.goods_name +'】商品的'+that.data.item.goods_price +'元的拼团活动 快来一起购买吧',
         path: '/pages/share/share?group_head_id=' + this.data.group_head_id + '&uesr_id=' + getApp().globalData.userid+'&share=2'
       }
     }else{

@@ -19,6 +19,7 @@ Page({
   
   },
   test:function(){
+    console.log(getApp().globalData)
     wx.navigateTo({
       url: '/pages/share/share?share=2&group_head_id=47',
     })
