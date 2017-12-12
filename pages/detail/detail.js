@@ -22,7 +22,7 @@ Page({
       id: e.id
     })
     //获取用户分销id
-    if (e.user_id) {
+    if (e.user_id&&e.active_type==1) {
       that.setData({
         distributer: e.user_id,
         actives_type: '1',
@@ -91,7 +91,7 @@ Page({
         })        
       }
     })   
-  },
+  }, 
   onShow:function(){
     var that = this;
     //判断用户是否可以分销
@@ -115,10 +115,15 @@ Page({
   //分销分享
   onShareAppMessage:function(e){
     var that = this;
-    console.log(getApp().globalData.userid)
+    wx.showShareMenu({
+      withShareTicket: true,
+    })
     return{
       title:that.data.goods_name,
-      path:'/pages/detail/detail?id='+that.data.id+'&user_id='+getApp().globalData.userid,
+      path:'/pages/detail/detail?id='+that.data.id+'&user_id='+getApp().globalData.userid+'active_type='+that.data.active_type,
+      success:function(res){
+        console.log(res)
+      }
     }
   },
   //轮播图指针

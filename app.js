@@ -1,6 +1,7 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function (ops) {
+   
     if (wx.getExtConfig) {
       wx.getExtConfig({
         success: function (res) {
@@ -28,6 +29,13 @@ App({
                       console.log(res6)
                       getApp().globalData.openid = res6.data.openid;
                       // getApp().globalData.openid = 'ocDMB0eQOsGqhf0g4CSy1vltRGag';
+                      // 获取分享群信息
+                      wx.getShareInfo({
+                        shareTicket:ops.shareTicket,
+                        success:function(sh){
+                          console.log(sh)
+                        }
+                      })
                       //获取用户信息
                       wx.getUserInfo({
                         success: res2 => {

@@ -29,7 +29,7 @@
   </view>
   <view class='break'></view>
   <view class='functionList'>
-    <view class='fun' wx:for="{{functionList}}" wx:key="{{index}}"  bindtap='tocheck' data-index='{{index}}'>
+    <view class='fun' wx:for="{{functionList}}" wx:key="{{index}}"  bindtap='tonotice' data-index='{{index}}'>
       <image src='{{item.img}}'></image>
       <view>{{item.title}}</view>
     </view>

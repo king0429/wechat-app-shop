@@ -1,13 +1,14 @@
 {
   "pages": [
-
-
+            "pages/checkgroup/checkgroup",
+    "pages/bindgroup/bindgroup",
     "pages/index/index",
     "pages/catlist/catlist",
     "pages/bindphone/bindphone",
     "pages/address/address",
     "pages/orders/orders",
-            "pages/start/start",
+
+    "pages/start/start",
     "pages/activeList/activeList",
     "pages/distribution/distribution",
     "pages/coupon/coupon",
@@ -23,7 +24,6 @@
     "pages/active/active",
     "pages/payment/payment",
     "pages/mine/mine",
-
     "pages/paycar/paycar",
     "pages/mall/mall",
     "pages/piece/piece",

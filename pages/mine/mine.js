@@ -128,6 +128,22 @@ Page({
       break;
     }
   },
+  tonotice:function(e){
+    switch (e.currentTarget.dataset.index) {
+      case 0:
+        wx.navigateTo({
+          url: '/pages/appointment/appoinment',
+        })
+        break;
+      default:
+        wx.showToast({
+          title: '请联系客服开通',
+          duration: 2000,
+          image: '/pages/source/images/waiting.png'
+        })
+        break;
+    }    
+  },
   bindphone:function(){
     wx.navigateTo({
       url: '/pages/setting/setting?code=1',
