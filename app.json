@@ -1,13 +1,13 @@
 {
   "pages": [
-            "pages/checkgroup/checkgroup",
+
     "pages/bindgroup/bindgroup",
     "pages/index/index",
     "pages/catlist/catlist",
     "pages/bindphone/bindphone",
     "pages/address/address",
     "pages/orders/orders",
-
+            "pages/checkgroup/checkgroup",
     "pages/start/start",
     "pages/activeList/activeList",
     "pages/distribution/distribution",

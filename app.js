@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function (ops) {
-   
+    console.log(ops)
     if (wx.getExtConfig) {
       wx.getExtConfig({
         success: function (res) {
@@ -29,11 +29,22 @@ App({
                       console.log(res6)
                       getApp().globalData.openid = res6.data.openid;
                       // getApp().globalData.openid = 'ocDMB0eQOsGqhf0g4CSy1vltRGag';
+                      var session_key = res6.data.session_key;
+                      console.log('get')
                       // 获取分享群信息
                       wx.getShareInfo({
                         shareTicket:ops.shareTicket,
                         success:function(sh){
                           console.log(sh)
+                          wx.request({
+                            url: 'https://xcx.bjletusq.com/index.php/home/common/Decrypt',
+                            method: 'POST',
+                            header: { "Content-Type": "application/x-www-form-urlencoded" },
+                            data: { appid: res.extConfig.appId, sessionKey: session_key, encryptedData: sh.encryptedData, iv:sh.iv},
+                            success: resh => {
+                              getApp().globalData.openGid = resh.data.openGid
+                            }
+                          })                          
                         }
                       })
                       //获取用户信息
